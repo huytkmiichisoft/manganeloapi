@@ -16,15 +16,16 @@ export class CronjobService {
         private requestService:RequestService,
         private readonly notificationService:NotificationService
     ){}
-    private readonly URL_WEBSITE="https://truyenfull.vn/"
-    // @Cron(CronExpression.EVERY_2_HOURS)
+    private readonly URL_WEBSITE="https://manganelo.com/"
+    //@Timeout(1000)
+    @Cron(CronExpression.EVERY_2_HOURS)
     async handleCron(){
        const listUrlNeedUpdate = await this.getListUrlNewsManga();
        console.log("LIST URL NEED UPDATE : " + listUrlNeedUpdate.length);
        const listMangaUpdate = await this.getListMangaByUrl(listUrlNeedUpdate);
        if(listMangaUpdate.length==0){
            return ;
-       }
+       } 
        for(let i=0;i<listMangaUpdate.length;i++){
             await this.updateMangaInfo(listMangaUpdate[i]);
        }
@@ -33,7 +34,7 @@ export class CronjobService {
         const resultFetch  = await this.requestService.getMethod(this.URL_WEBSITE);
         const $ = cheerio.load(resultFetch);
         let listLink:string[] = [];
-        $("#list-index > div.list.list-truyen.list-new.col-xs-12.col-sm-12.col-md-8.col-truyen-main > div[class=row] > div.col-xs-9.col-sm-6.col-md-5.col-title > h3 > a").each(function(){
+        $(".panel-content-homepage>.content-homepage-item>a").each(function(){
             listLink.push($(this).attr("href"))
         })
         return listLink ;
@@ -55,7 +56,7 @@ export class CronjobService {
                 manga:manga._id,
                 url:chapter.url,
                 index:chapter.index,
-                title:chapter.name
+                name:chapter.name
             })
         })
         const resultInsertChapter =await Promise.all(ArrayPromiseInsertChapter);
@@ -68,32 +69,13 @@ export class CronjobService {
         const resultFetch = await this.requestService.getMethod(url);
         const $ = cheerio.load(resultFetch);
         let Chapter:Array<{name?:string,url?:string,index?:number}>=[];
-        const pagination:number = $(".pagination.pagination-sm").length;
-        let lengthPage:number= 0 ;
-        let arrayPage:number[] = [];
-        if(pagination>0){
-            if($(".pagination.pagination-sm >li>a").length<5){
-                lengthPage= $(".pagination.pagination-sm >li>a").length ;
-            }else {
-                const listLength =  $(".pagination.pagination-sm >li:not(.page-nav)>a").last().attr("href");
-                let maxChapter = listLength.slice(0,listLength.lastIndexOf("/"));
-                lengthPage = parseInt( maxChapter.slice(maxChapter.lastIndexOf("-")+1,maxChapter.length));
-            }
-            for(let i=1;i<=lengthPage;i++){
-                arrayPage.push(i);
-            }
-            let ListPromise = arrayPage.map((item)=> this.getListChapterInPageLink(url,item));
-            let listLink = await Promise.all(ListPromise);
-            Chapter=Chapter.concat(...listLink);
-        }
-        else {
-            $(".list-chapter>li>a").each(function(){
-                const nameChapter = $(this).text();
-                const urlChapter = $(this).attr("href");
-                Chapter.push({name:nameChapter,url:urlChapter});
-            })
-        }
-        Chapter = Chapter.map((item,index)=>{item.index=index+1;return item});
+        $(".row-content-chapter >li.a-h >a").each(function(){
+            Chapter.push({
+                url:$(this).attr("href"),
+                name:$(this).text()
+            });
+        })
+        Chapter = Chapter.reverse().map((item,index)=>{item.index=index+1;return item});
         return Chapter ;
     }
     private async getListChapterInPageLink(url:string,page:number):Promise<Array<{name?:string,url?:string,index?:number}>>{

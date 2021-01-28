@@ -9,7 +9,7 @@ export const chapterSchema:mongoose.Schema = new mongoose.Schema({
         type:Number,
         default:1
     },
-    title:{
+    name:{
         type:String
     },
     url:{
@@ -43,7 +43,7 @@ export interface Chapter extends mongoose.Document {
     source?:string,
     images?:string[],
     content?:string,
-    title?:string,
+    name?:string,
     url?:string,
     before?:string,
     after?:string,
