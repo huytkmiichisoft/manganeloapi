@@ -102,7 +102,7 @@ const listMangaNotUpdate=()=>{
             }
         ]
         
-    }).limit(4000);
+    }).limit(10000);
 
 }
 module.exports= {
