@@ -1,4 +1,5 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { ValidationRequestServer } from './common/middleware/validation.request';
 import { CategoryModule } from './modules/category/category.module';
 import { ChapterModule } from './modules/chapter/chapter.module';
 import { CommentModule } from './modules/comment/comment.module';
@@ -28,4 +29,10 @@ import { ShareModule } from './shared/shared.module';
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(ValidationRequestServer)
+      .forRoutes('*');
+  }
+}
