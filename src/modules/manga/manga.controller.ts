@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ApiConsumes, ApiHeader, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ApiResult } from 'src/common/api-result';
 import { RoleType } from 'src/common/constants/role-type';
@@ -106,5 +106,21 @@ export class MangaController {
     async suggestToManga(@Body()dataSuggest:dtoSuggestManga){
         const listSuggest= await this.mangaService.listSuggestManga(dataSuggest.category,dataSuggest.page,dataSuggest.numberItem);
         return (new ApiResult().success(listSuggest))
+    }
+    @Get("hidden-list-manga")
+    @ApiOperation({summary:"Hidden List Manga"})
+    @ApiResponse({ status: 200, description: 'Hidden List Manga Success Fully.'})
+    @UsePipes(new ValidationPipe({transform:true}))
+    async hiddenMangaTop(){
+        await this.mangaService.hiddenListManga();
+        return (new ApiResult().success())
+    }
+    @Get("show-all-manga")
+    @ApiOperation({summary:"Show All List Manga"})
+    @ApiResponse({ status: 200, description: 'Show All Manga Success Fully.'})
+    @UsePipes(new ValidationPipe({transform:true}))
+    async showAllManga(){
+        await this.mangaService.showAllManga();
+        return (new ApiResult().success())
     }
 }

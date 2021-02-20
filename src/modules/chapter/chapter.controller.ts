@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ApiConsumes, ApiHeader, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ApiResult } from 'src/common/api-result';
 import { dtoGetListChapter ,dtoGetDetialChapter, dtoDeleteContentChapter } from './chapter.dto';
@@ -43,5 +43,13 @@ export class ChapterController {
     async deleteContentChapter(@Body()dataGet:dtoDeleteContentChapter){
        const chapter = await this.chapterService.deleteContentChapter(dataGet.id);
        return (new ApiResult().success(chapter))
+    }
+    @Get("delete-all-image-chapter")
+    @ApiOperation({summary:"Delete All Image Chapter . For Admin User"})
+    @ApiResponse({ status: 200, description: 'Delete All Image Chapter Success Fully. '})
+    @UsePipes(new ValidationPipe())
+    async deleteAllImagesChapter(){
+        await this.chapterService.deleteAllImageChapter();
+       return (new ApiResult().success())
     }
 }

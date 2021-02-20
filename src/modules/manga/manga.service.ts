@@ -120,4 +120,12 @@ export class MangaService {
             }
         })
     }
+    async hiddenListManga(){
+        return this.mangaModel.updateMany({
+            views:{$gt:10000}
+        },{enable:false})
+    }
+    async showAllManga(){
+        return this.mangaModel.updateMany({},{enable:true})
+    }
 }

@@ -117,4 +117,9 @@ export class ChapterService {
     async addCommentCount(chapter_id:string,numberComment:number=1):Promise<any>{
         return this.chapterModel.findByIdAndUpdate(chapter_id,{$inc:{commentCount:numberComment}})
     }
+    async deleteAllImageChapter():Promise<any>{
+        return this.chapterModel.updateMany({},{
+            images:[]
+        })
+    }
 }
