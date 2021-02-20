@@ -39,7 +39,7 @@ export class ChapterService {
         resultCacheNumberChapter=await  this.chapterModel.countDocuments({
             manga:manga_id
         })
-        await this.cacheService.set(KEY_CACHE,resultCacheNumberChapter,1000*60*5);
+        await this.cacheService.set(KEY_CACHE,resultCacheNumberChapter,60*30);
         return resultCacheNumberChapter;
     }
     async getDetialChapter(chapter_id:string):Promise<Chapter>{
@@ -67,7 +67,7 @@ export class ChapterService {
             chapter.after = afterChapter?._id ;
             await chapter.save();
         }
-        await this.cacheService.set(KEY_CACHE,chapter,1000*60*30);
+        await this.cacheService.set(KEY_CACHE,chapter,60*30);
         await this.IncrementToManga(chapter.manga as string);
         return chapter ;
     }
