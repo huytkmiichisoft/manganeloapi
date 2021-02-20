@@ -54,4 +54,27 @@ export class NotificationService {
             }
         })
     }
+    async sendNotificationTopicUpdateManga(manga_id:string){
+        const mangaData = await this.mangaModel.findById(manga_id).select("-devices");
+        if(!mangaData){
+            return ;
+        }
+        this.fcmPushService.sendMessage({
+            to:"/topics/"+manga_id,
+            notification:{
+                title:"🚩New chapter ",
+                body: `⏳ ${mangaData.name} have new chapter . Click to read now !!!`,
+                image:mangaData.image
+            },
+            data:{
+                type:NOTIFiCATION_TYPE.MANGA_NEW_CHAPTER,
+                data:mangaData
+            },
+            apns:{
+                fcm_options:{
+                    image:mangaData.image
+                }
+            }
+        })
+    }
 }

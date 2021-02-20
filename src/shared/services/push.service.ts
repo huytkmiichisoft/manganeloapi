@@ -21,10 +21,10 @@ export class FcmPushService{
 }
 export interface pushMessage{
     to?:string,
-    registration_ids:string[],
+    registration_ids?:string[],
     collapse_key?:string,
     notification:{title:string,body:string,image?:string},
-    data?:{[index:string]:string},
+    data?:{[index:string]:any},
     apns?:{
         fcm_options?:{image:string}
     }

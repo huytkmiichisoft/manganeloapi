@@ -62,7 +62,7 @@ export class CronjobService {
         const resultInsertChapter =await Promise.all(ArrayPromiseInsertChapter);
         const listIdChapterInsert:string[] = resultInsertChapter.map(item=>item._id);
         await this.updateChapterOfManga(manga._id,listIdChapterInsert);
-        this.notificationService.sendNotificationUpdateChapterManga(manga._id);
+        this.notificationService.sendNotificationTopicUpdateManga(manga._id);
         console.log("Update Success : " + listIdChapterInsert.length + "  Url : "+manga.url);
     }
     async getListNewChapterByUrl(url):Promise<Array<{name?:string,url?:string,index?:number}>>{

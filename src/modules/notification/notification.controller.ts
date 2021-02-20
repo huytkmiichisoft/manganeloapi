@@ -35,4 +35,12 @@ export class NotificationController {
         const result = await this.notificationService.sendNotificationUpdateChapterManga(data.manga_id);
         return (new ApiResult().success(result))
     }
+    @Post("notification-manga-update")
+    @ApiOperation({summary:"Test Notification To update Manga"})
+    @ApiResponse({ status: 200, description: 'Test Notification To update Manga Success Fully.'})
+    @UsePipes(new ValidationPipe({transform:true}))
+    async notificationUpdateManga(@Body()data:dtoTestNotificationUpdateManga){
+        const result = await this.notificationService.sendNotificationTopicUpdateManga(data.manga_id);
+        return (new ApiResult().success(result))
+    }
 }
