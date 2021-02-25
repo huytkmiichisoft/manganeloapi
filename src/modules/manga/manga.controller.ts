@@ -123,4 +123,25 @@ export class MangaController {
         await this.mangaService.showAllManga();
         return (new ApiResult().success())
     }
+    @Get("manga-slide-show")
+    @ApiOperation({summary:"Show All List Manga"})
+    @ApiResponse({ status: 200, description: 'Show All Manga Success Fully.'})
+    @UsePipes(new ValidationPipe({transform:true}))
+    async setMangaSlide (){
+        let listImagesNot :Array<string>=[
+            "https://res.cloudinary.com/truyenfull/image/upload/v1614219775/mangalenosilde/fc8ed6dfa5f256ac0fe3_opxe6s.jpg",
+            "https://res.cloudinary.com/truyenfull/image/upload/v1614219775/mangalenosilde/2f9e81cff2e201bc58f3_ztowqy.jpg",
+            "https://res.cloudinary.com/truyenfull/image/upload/v1614219775/mangalenosilde/acc929995ab4a9eaf0a5_tlpkyh.jpg",
+            "https://res.cloudinary.com/truyenfull/image/upload/v1614219775/mangalenosilde/7e4b751b0636f568ac27_pzofrd.jpg",
+            "https://res.cloudinary.com/truyenfull/image/upload/v1614219775/mangalenosilde/d772d322a00f53510a1e_e4inaa.jpg"
+        ]
+        let listImage:string[] =[
+            "https://res.cloudinary.com/truyenfull/image/upload/v1614219904/mangalenosilde/slide/11b18501f92c0a72533d_m3pt2b.jpg",
+            "https://res.cloudinary.com/truyenfull/image/upload/v1614219904/mangalenosilde/slide/9eec8b5cf771042f5d60_s2hmmj.jpg",
+            "https://res.cloudinary.com/truyenfull/image/upload/v1614219904/mangalenosilde/slide/701449a43589c6d79f98_xm0wkx.jpg",
+            "https://res.cloudinary.com/truyenfull/image/upload/v1614219904/mangalenosilde/slide/886514d468f99ba7c2e8_gegqmm.jpg",
+            "https://res.cloudinary.com/truyenfull/image/upload/v1614219904/mangalenosilde/slide/0dd9a168dd452e1b7754_i0diqq.jpg"
+        ]
+        return (new ApiResult().success(listImagesNot))
+    }
 }
