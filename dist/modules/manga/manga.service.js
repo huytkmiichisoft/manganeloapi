@@ -135,7 +135,7 @@ let MangaService = class MangaService {
     }
     async hiddenListManga() {
         return this.mangaModel.updateMany({
-            views: { $gt: 10000 }
+            views: { $gt: 50000 }
         }, { enable: false });
     }
     async showAllManga() {

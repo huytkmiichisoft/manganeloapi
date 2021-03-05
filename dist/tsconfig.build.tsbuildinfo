@@ -2742,7 +2742,7 @@
         "affectsGlobalScope": false
       },
       "../src/modules/manga/manga.service.ts": {
-        "version": "8897c04337d54f21b3cdd0c17ec3ffb8b53bfea63bbc8be129bff824f2bcc902",
+        "version": "6a1fa22a533319aa4caee7fe7e2f6e9d168e3b585d45af6eeacea6660dc6200a",
         "signature": "d56a933f17457919d4c441b9baadd18965934b15de56831a444e6c98addfe4e4",
         "affectsGlobalScope": false
       },
