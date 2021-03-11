@@ -20,10 +20,10 @@ export class ChapterController {
     @Post("list-chapter")
     @ApiOperation({summary:"Get List Chapter of Manga"})
     @ApiResponse({ status: 200, description: 'Get List Chapter Success Fully.'})
-    @UsePipes(new ValidationPipe())
+    @UsePipes(new ValidationPipe({transform:true,whitelist:true}))
     async getListChapter(@Body()dataGet:dtoGetListChapter){
         const [listChapter,totalChapter] = await Promise.all([
-            this.chapterService.getListChapterManga(dataGet.manga_id,dataGet.page,dataGet.numberItem),
+            this.chapterService.getListChapterManga(dataGet.manga_id,dataGet.page,dataGet.numberItem,dataGet.sort),
             this.chapterService.totalNumberChapter(dataGet.manga_id)
         ])
         return (new ApiResult().success(listChapter,totalChapter))

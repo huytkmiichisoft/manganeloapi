@@ -9,7 +9,7 @@ export declare class ChapterService {
     private requestService;
     private mangaService;
     constructor(chapterModel: Model<Chapter>, cacheService: CacheService, requestService: RequestService, mangaService: MangaService);
-    getListChapterManga(manga_id: string, page: number, numberItem: number): Promise<Array<Chapter>>;
+    getListChapterManga(manga_id: string, page: number, numberItem: number, sort: number): Promise<Array<Chapter>>;
     totalNumberChapter(manga_id: string): Promise<number>;
     getDetialChapter(chapter_id: string): Promise<Chapter>;
     private getListImagesChapter;

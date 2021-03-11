@@ -52,8 +52,8 @@ let NotificationService = class NotificationService {
         this.fcmPushService.sendMessage({
             registration_ids: mangaData.devices,
             notification: {
-                title: "Cập Nhật",
-                body: ` ${mangaData.name} đã có chapter mới kìa !!!`,
+                title: "🚩New chapter 🚩",
+                body: ` ${mangaData.name} have new chapter . Click to read now !!!`,
                 image: mangaData.image
             },
             data: {

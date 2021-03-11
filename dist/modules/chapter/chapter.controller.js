@@ -24,7 +24,7 @@ let ChapterController = class ChapterController {
     }
     async getListChapter(dataGet) {
         const [listChapter, totalChapter] = await Promise.all([
-            this.chapterService.getListChapterManga(dataGet.manga_id, dataGet.page, dataGet.numberItem),
+            this.chapterService.getListChapterManga(dataGet.manga_id, dataGet.page, dataGet.numberItem, dataGet.sort),
             this.chapterService.totalNumberChapter(dataGet.manga_id)
         ]);
         return (new api_result_1.ApiResult().success(listChapter, totalChapter));
@@ -46,7 +46,7 @@ __decorate([
     common_1.Post("list-chapter"),
     swagger_1.ApiOperation({ summary: "Get List Chapter of Manga" }),
     swagger_1.ApiResponse({ status: 200, description: 'Get List Chapter Success Fully.' }),
-    common_1.UsePipes(new common_1.ValidationPipe()),
+    common_1.UsePipes(new common_1.ValidationPipe({ transform: true, whitelist: true })),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [chapter_dto_1.dtoGetListChapter]),
