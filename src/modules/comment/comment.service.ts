@@ -41,7 +41,7 @@ export class CommentService {
         })
         .populate({
             path:'user',
-            select:"name avatar _id"
+            select:"name avatar _id role"
         })
         .sort({createdAt:-1})
         .skip((page-1)*numberItem).limit(numberItem).select("-reply");
@@ -52,7 +52,7 @@ export class CommentService {
         })
         .populate({
             path:'user',
-            select:"name avatar _id"
+            select:"name avatar _id role"
         }).sort({createdAt:-1})
         .skip((page-1)*numberItem).limit(numberItem).select("-reply");
     }
@@ -64,7 +64,7 @@ export class CommentService {
         })
         .populate({
             path:"reply.user",
-            select:"name avatar _id"
+            select:"name avatar _id role"
         })
     }
     async replyComment(user_id:string,comment_id:string,message:string):Promise<Comment>{
