@@ -15,7 +15,7 @@ export class UserService {
         if(userData){
             throw new HttpException(ERROR_TYPE.EMAIL_IS_EXITS,HttpStatus.BAD_REQUEST);
         }
-        return this.userModel.create({email:user.email.toLowerCase(),password:user.password});
+        return this.userModel.create({email:user.email.toLowerCase(),password:user.password,name:user.name});
     }
     async LoginUser(userData:dtoLoginUser):Promise<User>{
         const user = await this.userModel.findOne({email:userData.email.toLowerCase(),password:userData.password}).select("-password");

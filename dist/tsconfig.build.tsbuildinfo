@@ -5902,12 +5902,12 @@
         "affectsGlobalScope": false
       },
       "../src/modules/user/user.dto.ts": {
-        "version": "00c9c7146caf719dd5ff1ca4e5b649c9c05d9644592b99dedb890b296e7ccdbb",
-        "signature": "95c92b9d1545a29d7b9b8f13a2e4e0e9c74f6f33c32c5381f6ae762e5bbe7bce",
+        "version": "20aa562c20fd84dedf65072545cfc2dcd8ac39231fee4192af1e28e6bf2ebb4c",
+        "signature": "473830634b81dbb010c2282a1c8d8fa3c61623ad10d729cbd6214beccc1337ea",
         "affectsGlobalScope": false
       },
       "../src/modules/user/user.service.ts": {
-        "version": "383053e6b96fe623d5ab26f23ab464208b63d6e79271acd89e1d55e8f344daf4",
+        "version": "b2726fdb024c2a3d79752b0d800d7762e1df6dab39507a16be90e84cda16fbde",
         "signature": "fd07d0622587836edc363e19908e864874f5601aa2ee0b714afa2c5b667360ae",
         "affectsGlobalScope": false
       },

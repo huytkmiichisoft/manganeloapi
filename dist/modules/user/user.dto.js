@@ -25,6 +25,11 @@ __decorate([
     class_validator_1.IsString(),
     __metadata("design:type", String)
 ], dtoRegisterUser.prototype, "password", void 0);
+__decorate([
+    swagger_1.ApiProperty({ minLength: 1, example: "Phong" }),
+    class_validator_1.IsString(),
+    __metadata("design:type", String)
+], dtoRegisterUser.prototype, "name", void 0);
 exports.dtoRegisterUser = dtoRegisterUser;
 class dtoLoginUser {
 }

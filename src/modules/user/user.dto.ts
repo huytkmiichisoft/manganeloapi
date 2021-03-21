@@ -9,6 +9,9 @@ export class dtoRegisterUser{
     @ApiProperty({minLength:6})
     @IsString()
     password:string;
+    @ApiProperty({minLength:1,example:"Phong"})
+    @IsString()
+    name:string;
 }
 export class dtoLoginUser{
     @ApiProperty({example:"test@gmail.com"})

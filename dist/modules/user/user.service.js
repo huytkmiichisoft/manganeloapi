@@ -29,7 +29,7 @@ let UserService = class UserService {
         if (userData) {
             throw new common_1.HttpException(error_1.ERROR_TYPE.EMAIL_IS_EXITS, common_1.HttpStatus.BAD_REQUEST);
         }
-        return this.userModel.create({ email: user.email.toLowerCase(), password: user.password });
+        return this.userModel.create({ email: user.email.toLowerCase(), password: user.password, name: user.name });
     }
     async LoginUser(userData) {
         const user = await this.userModel.findOne({ email: userData.email.toLowerCase(), password: userData.password }).select("-password");

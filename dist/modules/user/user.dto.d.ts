@@ -1,6 +1,7 @@
 export declare class dtoRegisterUser {
     email: string;
     password: string;
+    name: string;
 }
 export declare class dtoLoginUser {
     email: string;
