@@ -37,7 +37,7 @@ let UserService = class UserService {
             throw new common_1.HttpException(error_1.ERROR_TYPE.EMAIL_OR_PASSWORD_IS_CORRECT, common_1.HttpStatus.BAD_REQUEST);
         }
         const userObject = user.toObject();
-        userObject.token = this.jwtService.sign(userObject);
+        userObject.token = this.jwtService.sign({ _id: userObject._id });
         return userObject;
     }
     async addDevicesUser(user_id, devices) {

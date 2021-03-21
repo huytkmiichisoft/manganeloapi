@@ -54,7 +54,7 @@ let CommentService = class CommentService {
         })
             .populate({
             path: 'user',
-            select: "name avatar _id"
+            select: "name avatar _id role"
         })
             .sort({ createdAt: -1 })
             .skip((page - 1) * numberItem).limit(numberItem).select("-reply");
@@ -65,7 +65,7 @@ let CommentService = class CommentService {
         })
             .populate({
             path: 'user',
-            select: "name avatar _id"
+            select: "name avatar _id role"
         }).sort({ createdAt: -1 })
             .skip((page - 1) * numberItem).limit(numberItem).select("-reply");
     }
@@ -77,7 +77,7 @@ let CommentService = class CommentService {
         })
             .populate({
             path: "reply.user",
-            select: "name avatar _id"
+            select: "name avatar _id role"
         });
     }
     async replyComment(user_id, comment_id, message) {

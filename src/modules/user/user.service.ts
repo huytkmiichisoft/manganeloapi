@@ -22,8 +22,8 @@ export class UserService {
         if(!user){
             throw new HttpException(ERROR_TYPE.EMAIL_OR_PASSWORD_IS_CORRECT,HttpStatus.BAD_REQUEST);
         }
-        const userObject = user.toObject();
-        userObject.token = this.jwtService.sign(userObject);
+        const userObject:User = user.toObject();
+        userObject.token = this.jwtService.sign({_id:userObject._id});
         return userObject;
     }
     async addDevicesUser(user_id:string,devices:string):Promise<User>{

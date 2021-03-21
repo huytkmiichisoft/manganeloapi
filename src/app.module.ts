@@ -1,4 +1,5 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { RequestCheckMiddleware } from './common/middleware/usermiddleware';
 import { ValidationRequestServer } from './common/middleware/validation.request';
 import { CategoryModule } from './modules/category/category.module';
 import { ChapterModule } from './modules/chapter/chapter.module';
@@ -32,7 +33,7 @@ import { ShareModule } from './shared/shared.module';
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(ValidationRequestServer)
+      .apply(RequestCheckMiddleware,ValidationRequestServer)
       .forRoutes('*');
   }
 }

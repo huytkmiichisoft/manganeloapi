@@ -42,7 +42,7 @@ let ChapterService = class ChapterService {
             .limit(numberItem)
             .sort({ index: sort })
             .select("-images -url -updatedAt -source -manga -content");
-        await this.cacheService.set(KEY_CACHE, dataCache, 1000 * 60 * 30);
+        await this.cacheService.set(KEY_CACHE, dataCache, 60 * 30);
         return dataCache;
     }
     async totalNumberChapter(manga_id) {

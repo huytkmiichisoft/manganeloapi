@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
+const usermiddleware_1 = require("./common/middleware/usermiddleware");
 const validation_request_1 = require("./common/middleware/validation.request");
 const category_module_1 = require("./modules/category/category.module");
 const chapter_module_1 = require("./modules/chapter/chapter.module");
@@ -23,7 +24,7 @@ const shared_module_1 = require("./shared/shared.module");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer
-            .apply(validation_request_1.ValidationRequestServer)
+            .apply(usermiddleware_1.RequestCheckMiddleware, validation_request_1.ValidationRequestServer)
             .forRoutes('*');
     }
 };
