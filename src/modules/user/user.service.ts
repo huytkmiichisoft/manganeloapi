@@ -35,4 +35,7 @@ export class UserService {
     async updateUserInfo(user_id:string,infoUser:dtoUpdateUserInfo):Promise<User>{
         return this.userModel.findByIdAndUpdate(user_id,{...infoUser},{new:true});
     }
+    async getMeInfoUser(user_id:string):Promise<User>{
+        return this.userModel.findById(user_id).select("-password -devices");
+    }
 }

@@ -1502,7 +1502,7 @@
         "affectsGlobalScope": false
       },
       "../src/common/middleware/usermiddleware.ts": {
-        "version": "0a4da6df33a57270d745abeafea02d3d7f878673268e846b97892c727f1ebc4d",
+        "version": "ac2c868ff21b2a2bd92e7e5038afd03333ec1850bec7a7a62438da8cbb44489c",
         "signature": "e167055f9d252db53aabf769f20329b627ad7782795047d527d2142a0627c457",
         "affectsGlobalScope": false
       },
@@ -5907,13 +5907,13 @@
         "affectsGlobalScope": false
       },
       "../src/modules/user/user.service.ts": {
-        "version": "b2726fdb024c2a3d79752b0d800d7762e1df6dab39507a16be90e84cda16fbde",
-        "signature": "fd07d0622587836edc363e19908e864874f5601aa2ee0b714afa2c5b667360ae",
+        "version": "d38d4392ae5863e96a939a66172afd7e5ab7e8f62ddf434a26e0dbf07bb99be3",
+        "signature": "6f82d6bfbfe18d93edd69fbbd17e10bb73b1f1a70184a0b93a69e2b398dac2f8",
         "affectsGlobalScope": false
       },
       "../src/modules/user/user.controller.ts": {
-        "version": "57a62917d98c1344caa5777102bb381997cec164521010ac9062440cf02215e5",
-        "signature": "6451f202c7ca46a04bb7a1a7bb072f28bcd7af3585809f10ae9a5ac623e1f4df",
+        "version": "06a3fc8220dc1baa6d278b399da0473cb2c5b3d5705b8b78f7831658b012e76d",
+        "signature": "8b2eb25fce3b0c36f4aec74f63b8885a7d26d754be4dff0738d10329127c6994",
         "affectsGlobalScope": false
       },
       "../src/modules/user/user.module.ts": {

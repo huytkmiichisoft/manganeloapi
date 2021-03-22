@@ -10,4 +10,5 @@ export declare class UserController {
     addDevicesUser(dataDevices: dtoDevicesUser, user: User): Promise<ApiResult<unknown>>;
     userRemoveDevices(user: User, dataRemove: dtoRemoveDevicesUser): Promise<ApiResult<unknown>>;
     updateUserInfo(dataUpdate: dtoUpdateUserInfo, user: User): Promise<ApiResult<unknown>>;
+    getMeInfoUser(user: User): Promise<ApiResult<unknown>>;
 }

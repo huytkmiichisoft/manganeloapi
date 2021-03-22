@@ -11,4 +11,5 @@ export declare class UserService {
     addDevicesUser(user_id: string, devices: string): Promise<User>;
     removeDeviceUser(user_id: string, devices: string): Promise<User>;
     updateUserInfo(user_id: string, infoUser: dtoUpdateUserInfo): Promise<User>;
+    getMeInfoUser(user_id: string): Promise<User>;
 }

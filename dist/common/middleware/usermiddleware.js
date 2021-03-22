@@ -20,7 +20,6 @@ let RequestCheckMiddleware = class RequestCheckMiddleware {
     async use(req, res, next) {
         var _a;
         const token = (_a = req.headers) === null || _a === void 0 ? void 0 : _a.token;
-        console.log(token);
         if (token) {
             try {
                 let user = this.jwtService.decode(token);

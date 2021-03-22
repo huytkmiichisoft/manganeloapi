@@ -47,6 +47,10 @@ let UserController = class UserController {
         await this.userService.updateUserInfo(user._id, dataUpdate);
         return (new api_result_1.ApiResult().success());
     }
+    async getMeInfoUser(user) {
+        let userData = await this.userService.getMeInfoUser(user._id);
+        return (new api_result_1.ApiResult().success(userData));
+    }
 };
 __decorate([
     common_1.Post("register-user"),
@@ -101,6 +105,17 @@ __decorate([
     __metadata("design:paramtypes", [user_dto_1.dtoUpdateUserInfo, Object]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "updateUserInfo", null);
+__decorate([
+    common_1.Get("get-me-info"),
+    swagger_1.ApiOperation({ summary: "Update User Info" }),
+    swagger_1.ApiResponse({ status: 200, description: 'Update User Info Success.' }),
+    role_decorators_1.Roles(role_type_1.RoleType.USER),
+    common_1.UsePipes(new common_1.ValidationPipe({ transform: true })),
+    __param(0, user_decorators_1.UserInfo()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "getMeInfoUser", null);
 UserController = __decorate([
     swagger_1.ApiHeader({
         name: 'token',

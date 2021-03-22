@@ -7,7 +7,6 @@ export class RequestCheckMiddleware implements NestMiddleware {
     constructor(private jwtService: JwtService){}
     async use(req: Request|any, res: Response, next: Function){
         const token =  req.headers?.token ;
-        console.log(token);
         if(token){
             try {
                 let user= this.jwtService.decode(token);

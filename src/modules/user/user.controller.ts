@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ApiConsumes, ApiHeader, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ApiResult } from 'src/common/api-result';
 import { RoleType } from 'src/common/constants/role-type';
@@ -66,4 +66,14 @@ export class UserController {
        await this.userService.updateUserInfo(user._id,dataUpdate);
        return (new ApiResult().success())
     }
+    @Get("get-me-info")
+    @ApiOperation({summary:"Update User Info"})
+    @ApiResponse({ status: 200, description: 'Update User Info Success.'})
+    @Roles(RoleType.USER)
+    @UsePipes(new ValidationPipe({transform:true}))
+    async getMeInfoUser(@UserInfo()user:User){
+       let userData = await this.userService.getMeInfoUser(user._id);
+       return (new ApiResult().success(userData))
+    }
+
 }

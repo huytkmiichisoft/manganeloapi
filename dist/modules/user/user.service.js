@@ -49,6 +49,9 @@ let UserService = class UserService {
     async updateUserInfo(user_id, infoUser) {
         return this.userModel.findByIdAndUpdate(user_id, Object.assign({}, infoUser), { new: true });
     }
+    async getMeInfoUser(user_id) {
+        return this.userModel.findById(user_id).select("-password -devices");
+    }
 };
 UserService = __decorate([
     common_1.Injectable(),
