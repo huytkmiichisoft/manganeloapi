@@ -58,3 +58,14 @@ export class dtoDetialComment{
     @IsMongoId()
     comment_id:string;
 }
+export class dtoListCommentPublic{
+    @ApiProperty({minimum:1,example:1})
+    @IsNumber()
+    @Min(1)
+    page:number=1;
+    @ApiProperty({minimum:1,example:10})
+    @IsNumber()
+    @IsOptional()
+    @Min(1)
+    numberItem:number=10
+}

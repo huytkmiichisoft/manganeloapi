@@ -51,6 +51,10 @@ let CommentController = class CommentController {
         const comment = await this.commentService.getDetialComment(dataDetial.comment_id);
         return (new api_result_1.ApiResult().success(comment));
     }
+    async getListPublicComment(dataComment) {
+        const listComment = await this.commentService.getListTopComment(dataComment.page, dataComment.numberItem);
+        return (new api_result_1.ApiResult().success(listComment));
+    }
 };
 __decorate([
     common_1.Post("comment-manga"),
@@ -115,6 +119,17 @@ __decorate([
     __metadata("design:paramtypes", [comment_dto_1.dtoDetialComment]),
     __metadata("design:returntype", Promise)
 ], CommentController.prototype, "getDetialComment", null);
+__decorate([
+    common_1.Post("list-public-comment"),
+    swagger_1.ApiOperation({ summary: "Get List Comment Manga" }),
+    swagger_1.ApiResponse({ status: 200, description: 'get List Comment Success Full.' }),
+    role_decorators_1.Roles(role_type_1.RoleType.MEMBER),
+    common_1.UsePipes(new common_1.ValidationPipe()),
+    __param(0, common_1.Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [comment_dto_1.dtoListCommentPublic]),
+    __metadata("design:returntype", Promise)
+], CommentController.prototype, "getListPublicComment", null);
 CommentController = __decorate([
     swagger_1.ApiHeader({
         name: 'token',

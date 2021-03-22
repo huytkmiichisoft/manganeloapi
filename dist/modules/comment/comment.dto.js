@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.dtoDetialComment = exports.dtoReplyComment = exports.dtoListCommentChapter = exports.dtoListCommentManga = exports.dtoCommentToChapter = exports.dtoCommentToManga = void 0;
+exports.dtoListCommentPublic = exports.dtoDetialComment = exports.dtoReplyComment = exports.dtoListCommentChapter = exports.dtoListCommentManga = exports.dtoCommentToChapter = exports.dtoCommentToManga = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 class dtoCommentToManga {
@@ -109,4 +109,24 @@ __decorate([
     __metadata("design:type", String)
 ], dtoDetialComment.prototype, "comment_id", void 0);
 exports.dtoDetialComment = dtoDetialComment;
+class dtoListCommentPublic {
+    constructor() {
+        this.page = 1;
+        this.numberItem = 10;
+    }
+}
+__decorate([
+    swagger_1.ApiProperty({ minimum: 1, example: 1 }),
+    class_validator_1.IsNumber(),
+    class_validator_1.Min(1),
+    __metadata("design:type", Number)
+], dtoListCommentPublic.prototype, "page", void 0);
+__decorate([
+    swagger_1.ApiProperty({ minimum: 1, example: 10 }),
+    class_validator_1.IsNumber(),
+    class_validator_1.IsOptional(),
+    class_validator_1.Min(1),
+    __metadata("design:type", Number)
+], dtoListCommentPublic.prototype, "numberItem", void 0);
+exports.dtoListCommentPublic = dtoListCommentPublic;
 //# sourceMappingURL=comment.dto.js.map

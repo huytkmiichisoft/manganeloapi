@@ -83,4 +83,21 @@ export class CommentService {
             }
         })
     }
+    async getListTopComment(page:number,numberItem:number){
+        return this.commentModel.find()
+        .populate({
+            path:"manga",
+            select:"name image _id author"
+        })
+        .populate({
+            path:"chapter",
+            select:"title index _id"
+        })
+        .populate({
+            path:'user',
+            select:"name avatar _id role"
+        })
+        .sort({createdAt:-1})
+        .skip((page-1)*numberItem).limit(numberItem).select("-reply");
+    }
 }

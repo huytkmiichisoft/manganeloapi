@@ -1,22 +1,22 @@
 import { Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiConsumes } from '@nestjs/swagger';
+import { storageCloudinary } from 'src/common/cloudinary';
 import { ApiResult } from 'src/common/api-result';
-import { storageDrive } from 'src/common/google/storage.google';
-import { fileUpload } from './upload.interface';
+import { fileUploadCloudinary } from './upload.interface';
 
 @Controller('upload')
 export class UploadController {
     @Post("/")
     @ApiConsumes('multipart/form-data')
     @UseInterceptors(FileInterceptor('file',{
-        storage:storageDrive,
+        storage:storageCloudinary,
         limits:{
             fieldSize:1000
         }
     }))
-    uploadFile(@UploadedFile()file:fileUpload){
-        return (new ApiResult().success("https://drive.google.com/uc?id="+file.fileId))
+    uploadFile(@UploadedFile()file:fileUploadCloudinary){
+        return (new ApiResult().success(file.path))
     }
 
 }

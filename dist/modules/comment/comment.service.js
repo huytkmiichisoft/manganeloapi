@@ -95,6 +95,23 @@ let CommentService = class CommentService {
             }
         });
     }
+    async getListTopComment(page, numberItem) {
+        return this.commentModel.find()
+            .populate({
+            path: "manga",
+            select: "name image _id author"
+        })
+            .populate({
+            path: "chapter",
+            select: "title index _id"
+        })
+            .populate({
+            path: 'user',
+            select: "name avatar _id role"
+        })
+            .sort({ createdAt: -1 })
+            .skip((page - 1) * numberItem).limit(numberItem).select("-reply");
+    }
 };
 CommentService = __decorate([
     common_1.Injectable(),

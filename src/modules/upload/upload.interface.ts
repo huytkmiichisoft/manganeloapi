@@ -6,3 +6,11 @@ export interface fileUpload{
     fileName:string,
     fileId:string
 }
+export interface fileUploadCloudinary {
+    fieldname:string,
+    originalname:string,
+    encoding:string,
+    mimetype:string,
+    path:string,
+    size:number
+}

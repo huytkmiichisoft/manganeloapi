@@ -6,7 +6,7 @@ import { Roles } from 'src/common/decorators/role.decorators';
 import { UserInfo } from 'src/common/decorators/user.decorators';
 import { RolesGuard } from 'src/common/guards/roles.guard';
 import { ROLE_USER, User } from 'src/database/user.model';
-import { dtoCommentToChapter, dtoCommentToManga, dtoDetialComment, dtoListCommentChapter, dtoListCommentManga ,dtoReplyComment} from './comment.dto';
+import { dtoCommentToChapter, dtoCommentToManga, dtoDetialComment, dtoListCommentChapter, dtoListCommentManga ,dtoReplyComment,dtoListCommentPublic} from './comment.dto';
 import { CommentService } from './comment.service';
 @ApiHeader({
     name: 'token',
@@ -73,5 +73,14 @@ export class CommentController {
     async getDetialComment(@Body()dataDetial:dtoDetialComment){
         const comment = await this.commentService.getDetialComment(dataDetial.comment_id);
         return (new ApiResult().success(comment))
+    }
+    @Post("list-public-comment")
+    @ApiOperation({summary:"Get List Comment Manga"})
+    @ApiResponse({ status: 200, description: 'get List Comment Success Full.'})
+    @Roles(RoleType.MEMBER)
+    @UsePipes(new ValidationPipe())
+    async getListPublicComment(@Body()dataComment:dtoListCommentPublic){
+        const listComment = await this.commentService.getListTopComment(dataComment.page,dataComment.numberItem);
+        return (new ApiResult().success(listComment))
     }
 }

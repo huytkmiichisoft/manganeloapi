@@ -16,18 +16,18 @@ exports.UploadController = void 0;
 const common_1 = require("@nestjs/common");
 const platform_express_1 = require("@nestjs/platform-express");
 const swagger_1 = require("@nestjs/swagger");
+const cloudinary_1 = require("../../common/cloudinary");
 const api_result_1 = require("../../common/api-result");
-const storage_google_1 = require("../../common/google/storage.google");
 let UploadController = class UploadController {
     uploadFile(file) {
-        return (new api_result_1.ApiResult().success("https://drive.google.com/uc?id=" + file.fileId));
+        return (new api_result_1.ApiResult().success(file.path));
     }
 };
 __decorate([
     common_1.Post("/"),
     swagger_1.ApiConsumes('multipart/form-data'),
     common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
-        storage: storage_google_1.storageDrive,
+        storage: cloudinary_1.storageCloudinary,
         limits: {
             fieldSize: 1000
         }

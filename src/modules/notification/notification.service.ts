@@ -68,7 +68,7 @@ export class NotificationService {
             },
             data:{
                 type:NOTIFiCATION_TYPE.MANGA_NEW_CHAPTER,
-                data:mangaData
+                data:JSON.stringify(mangaData)
             },
             apns:{
                 fcm_options:{

@@ -23,3 +23,7 @@ export declare class dtoReplyComment {
 export declare class dtoDetialComment {
     comment_id: string;
 }
+export declare class dtoListCommentPublic {
+    page: number;
+    numberItem: number;
+}

@@ -13,4 +13,5 @@ export declare class CommentService {
     getListCommentInChapter(chapter_id: string, page: number, numberItem: number): Promise<Array<Comment>>;
     getDetialComment(comment_id: string): Promise<Comment>;
     replyComment(user_id: string, comment_id: string, message: string): Promise<Comment>;
+    getListTopComment(page: number, numberItem: number): Promise<Comment[]>;
 }

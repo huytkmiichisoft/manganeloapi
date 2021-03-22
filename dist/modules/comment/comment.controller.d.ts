@@ -1,6 +1,6 @@
 import { ApiResult } from 'src/common/api-result';
 import { User } from 'src/database/user.model';
-import { dtoCommentToChapter, dtoCommentToManga, dtoDetialComment, dtoListCommentChapter, dtoListCommentManga, dtoReplyComment } from './comment.dto';
+import { dtoCommentToChapter, dtoCommentToManga, dtoDetialComment, dtoListCommentChapter, dtoListCommentManga, dtoReplyComment, dtoListCommentPublic } from './comment.dto';
 import { CommentService } from './comment.service';
 export declare class CommentController {
     private commentService;
@@ -11,4 +11,5 @@ export declare class CommentController {
     getListCommentChapter(dataComment: dtoListCommentChapter): Promise<ApiResult<unknown>>;
     addReplyComment(user: User, dataReply: dtoReplyComment): Promise<ApiResult<unknown>>;
     getDetialComment(dataDetial: dtoDetialComment): Promise<ApiResult<unknown>>;
+    getListPublicComment(dataComment: dtoListCommentPublic): Promise<ApiResult<unknown>>;
 }
