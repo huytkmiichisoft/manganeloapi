@@ -2,6 +2,7 @@ import { ConfigServer } from './config.service';
 export declare class FcmPushService {
     private configServer;
     private fcm;
+    private fcmManga;
     constructor(configServer: ConfigServer);
     sendMessage(message: pushMessage): Promise<void>;
 }
