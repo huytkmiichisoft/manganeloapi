@@ -3,7 +3,7 @@ import { Manga } from 'src/database/manga.model';
 import { CacheService } from 'src/shared/services/cache/cache.service';
 import { dtoGetListManga, dtoGetListMangaByCategory, dtoSearchManga } from './manga.dto';
 export declare class MangaService {
-    private mangaModel;
+    mangaModel: Model<Manga>;
     private cacheService;
     constructor(mangaModel: Model<Manga>, cacheService: CacheService);
     getListManga(dataGet: dtoGetListManga): Promise<Manga[]>;
@@ -21,5 +21,6 @@ export declare class MangaService {
     addUserFollowManga(user_id: string, manga_id: string): Promise<Manga>;
     userUnFollowManga(manga_id: string, user_id: string): Promise<Manga>;
     hiddenListManga(): Promise<any>;
+    hiddenMangaSex(): Promise<any>;
     showAllManga(): Promise<any>;
 }

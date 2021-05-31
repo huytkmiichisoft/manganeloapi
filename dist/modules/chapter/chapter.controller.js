@@ -41,6 +41,10 @@ let ChapterController = class ChapterController {
         await this.chapterService.deleteAllImageChapter();
         return (new api_result_1.ApiResult().success());
     }
+    async deleteChapterNotFound() {
+        await this.chapterService.deleteChapterNotInManga();
+        return 1;
+    }
 };
 __decorate([
     common_1.Post("list-chapter"),
@@ -81,6 +85,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], ChapterController.prototype, "deleteAllImagesChapter", null);
+__decorate([
+    common_1.Get("delete-chapter-not-found"),
+    swagger_1.ApiOperation({ summary: "Delete Chapter Not Found" }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], ChapterController.prototype, "deleteChapterNotFound", null);
 ChapterController = __decorate([
     swagger_1.ApiHeader({
         name: 'token',

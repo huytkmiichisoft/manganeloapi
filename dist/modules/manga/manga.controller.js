@@ -68,7 +68,8 @@ let MangaController = class MangaController {
         return (new api_result_1.ApiResult().success(listSuggest));
     }
     async hiddenMangaTop() {
-        await this.mangaService.hiddenListManga();
+        let result = await this.mangaService.hiddenMangaSex();
+        console.log(result);
         return (new api_result_1.ApiResult().success());
     }
     async showAllManga() {

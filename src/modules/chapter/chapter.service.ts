@@ -122,4 +122,12 @@ export class ChapterService {
             images:[]
         })
     }
+    async deleteChapterNotInManga(){
+        const countDocument = await this.mangaService.mangaModel.find().sort({views:-1}).limit(35);
+        console.log(countDocument.length);
+        const listId = countDocument.map((manga)=>manga._id);
+         //await this.mangaService.mangaModel.deleteMany({_id:{$in:listId}});
+        let listChapter = await this.chapterModel.deleteMany({manga:{$nin:listId}});
+        // console.log(listChapter);
+    }
 }

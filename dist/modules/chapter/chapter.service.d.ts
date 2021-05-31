@@ -18,4 +18,5 @@ export declare class ChapterService {
     deleteContentChapter(chapter_id: string): Promise<Chapter>;
     addCommentCount(chapter_id: string, numberComment?: number): Promise<any>;
     deleteAllImageChapter(): Promise<any>;
+    deleteChapterNotInManga(): Promise<void>;
 }

@@ -2782,13 +2782,13 @@
         "affectsGlobalScope": false
       },
       "../src/modules/manga/manga.service.ts": {
-        "version": "6a1fa22a533319aa4caee7fe7e2f6e9d168e3b585d45af6eeacea6660dc6200a",
-        "signature": "d56a933f17457919d4c441b9baadd18965934b15de56831a444e6c98addfe4e4",
+        "version": "9a8f6c2f5befbd15b781f008b23377c9c3f54c8967c2eb97e690d5a896cb5fd4",
+        "signature": "b76d0d4ea5f632f5c7d19fb26ecbdf3063a811193d860851ce4770642d9fee9c",
         "affectsGlobalScope": false
       },
       "../src/modules/chapter/chapter.service.ts": {
-        "version": "db6e835291b242e9840d8fbcfc01fc6566c62a65fbc6c4632435df203d16b8a7",
-        "signature": "3404d0f14a3b92e47c0af3fb34407118d736c38c3eed58b7ce53634df7549495",
+        "version": "1642f110741722ae6c619208dffa529cdedd7a6093f6b159db346c7e708b8890",
+        "signature": "96e6e6aea8875465be0e3a51fbc0bed31c53abb1b0eb89e6f32ee65ebd9f1b2d",
         "affectsGlobalScope": false
       },
       "../src/modules/chapter/chapter.dto.ts": {
@@ -2797,8 +2797,8 @@
         "affectsGlobalScope": false
       },
       "../src/modules/chapter/chapter.controller.ts": {
-        "version": "702683796690093634b15079f50696d3a17472b84fb8484889ec78695bd0177a",
-        "signature": "e5517356b9dcd30ca77cd23b7304e34801c5dd417a1457e7aa3f519bd4c12a97",
+        "version": "f0d2ceb42af209d7c7500660668d014e9d9ffd8aed9d2f9b0e51f06274e136f7",
+        "signature": "e1d48261bc2e87f70cf3fb9f714cd8ef403c450ec86becd60ae02ca7ba37be4a",
         "affectsGlobalScope": false
       },
       "../src/common/constants/role-type.ts": {
@@ -3007,7 +3007,7 @@
         "affectsGlobalScope": false
       },
       "../src/modules/manga/manga.controller.ts": {
-        "version": "b7cf5dd596c74039f8407c6087e6598c44e5c2af8b992326090d92f277b2e3ec",
+        "version": "26e7a4900a202c96d193cb81a67ddd027b2cc523fecc8a63d79720d8f1b2d9ea",
         "signature": "a70a60bed5f57e2d95aa395e5ff279d52f405ee804f13709aaebdb05b1d913a6",
         "affectsGlobalScope": false
       },

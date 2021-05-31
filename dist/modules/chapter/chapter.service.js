@@ -137,6 +137,12 @@ let ChapterService = class ChapterService {
             images: []
         });
     }
+    async deleteChapterNotInManga() {
+        const countDocument = await this.mangaService.mangaModel.find().sort({ views: -1 }).limit(35);
+        console.log(countDocument.length);
+        const listId = countDocument.map((manga) => manga._id);
+        let listChapter = await this.chapterModel.deleteMany({ manga: { $nin: listId } });
+    }
 };
 ChapterService = __decorate([
     common_1.Injectable(),

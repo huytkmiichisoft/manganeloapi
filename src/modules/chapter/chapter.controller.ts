@@ -52,4 +52,10 @@ export class ChapterController {
         await this.chapterService.deleteAllImageChapter();
        return (new ApiResult().success())
     }
+    @Get("delete-chapter-not-found")
+    @ApiOperation({summary:"Delete Chapter Not Found"})
+    async deleteChapterNotFound(){
+        await this.chapterService.deleteChapterNotInManga();
+        return 1 ;
+    }
 }

@@ -4,10 +4,9 @@ import { Model } from 'mongoose';
 import { Manga } from 'src/database/manga.model';
 import { CacheService } from 'src/shared/services/cache/cache.service';
 import { dtoGetListManga, dtoGetListMangaByCategory, dtoSearchManga } from './manga.dto';
-
 @Injectable()
 export class MangaService {
-    constructor(@InjectModel('manga' )private mangaModel:Model<Manga>,
+    constructor(@InjectModel('manga' )public mangaModel:Model<Manga>,
     private cacheService:CacheService,){}
     async getListManga(dataGet:dtoGetListManga):Promise<Manga[]>{
         const KEY_CACHE:string="CACHE_LIST_MANGA_"+dataGet.page+"_"+dataGet.type+"_"+dataGet.numberItem;
@@ -99,7 +98,8 @@ export class MangaService {
         return this.mangaModel.find({
             "category":{
                 $in:category
-            }
+            },
+            enable:true
         })
         .select("-category -chapters -user_follow")
         .sort({"devices.length":-1})
@@ -123,6 +123,11 @@ export class MangaService {
     async hiddenListManga(){
         return this.mangaModel.updateMany({
             views:{$gt:50000}
+        },{enable:false})
+    }
+    async hiddenMangaSex(){
+        return this.mangaModel.updateMany({
+            category:"Adult"
         },{enable:false})
     }
     async showAllManga(){

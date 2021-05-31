@@ -112,7 +112,9 @@ export class MangaController {
     @ApiResponse({ status: 200, description: 'Hidden List Manga Success Fully.'})
     @UsePipes(new ValidationPipe({transform:true}))
     async hiddenMangaTop(){
-        await this.mangaService.hiddenListManga();
+        //await this.mangaService.hiddenListManga();
+        let result = await this.mangaService.hiddenMangaSex();
+        console.log(result);
         return (new ApiResult().success())
     }
     @Get("show-all-manga")

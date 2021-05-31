@@ -16,6 +16,10 @@ let chapter = new Schema({
         {
             type:String
         }
-    ]
+    ],
+    update_images:{
+        type:Boolean,
+        default:false
+    }
 },{timestamps:true})
 module.exports = mongoose.model('chapter',chapter);

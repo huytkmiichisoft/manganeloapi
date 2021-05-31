@@ -8,4 +8,5 @@ export declare class ChapterController {
     getDetialListChapter(dataGet: dtoGetDetialChapter): Promise<ApiResult<unknown>>;
     deleteContentChapter(dataGet: dtoDeleteContentChapter): Promise<ApiResult<unknown>>;
     deleteAllImagesChapter(): Promise<ApiResult<unknown>>;
+    deleteChapterNotFound(): Promise<number>;
 }

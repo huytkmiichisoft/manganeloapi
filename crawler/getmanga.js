@@ -4,9 +4,9 @@ let mangaDb = require('./model/manga');
 let chapterDb = require('./model/chapter');
 let {TYPE_STATUS_MANGA} = require('./constant');
 const getListMangaData=async(page)=>{
-    let url ='https://manganelo.com/genre-all/'+page
+    let url ='https://manganato.com/genre-all/'+page
     if(page==1){
-        url ="https://manganelo.com/genre-all"
+        url ="https://manganato.com/genre-all"
     }
     url +='?type=topview';
     let data=  await request({

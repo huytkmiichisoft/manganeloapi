@@ -112,7 +112,8 @@ let MangaService = class MangaService {
         return this.mangaModel.find({
             "category": {
                 $in: category
-            }
+            },
+            enable: true
         })
             .select("-category -chapters -user_follow")
             .sort({ "devices.length": -1 })
@@ -136,6 +137,11 @@ let MangaService = class MangaService {
     async hiddenListManga() {
         return this.mangaModel.updateMany({
             views: { $gt: 50000 }
+        }, { enable: false });
+    }
+    async hiddenMangaSex() {
+        return this.mangaModel.updateMany({
+            category: "Adult"
         }, { enable: false });
     }
     async showAllManga() {
